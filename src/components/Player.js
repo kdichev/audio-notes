@@ -12,7 +12,7 @@ export default class Player extends Component {
   render() {
     return (
       <div>
-        <audio id="player">
+        <audio controls>
           <source src={this.state.source} type="audio/ogg" />
           Your browser does not support the audio tag.
         </audio>

@@ -3,7 +3,6 @@ import './App.css';
 import Controlls from './components/Controlls.js'
 import Player from './components/Player.js'
 import Recorder from './components/Recorder.js'
-import Dictaphone from 'dictaphone-js';
 
 
 
@@ -62,18 +61,6 @@ class App extends Component {
 
   componentDidMount() {
     this.progressCounter();
-    const player = document.getElementById("player"),
-          rec = document.getElementById("rec"),
-          stop = document.getElementById("stop"),
-          pp = document.getElementById("play_pause"),
-          rew = document.getElementById("rew"),
-          ff = document.getElementById("ff");
-    const dictaphone = new Dictaphone(player);
-    rec.addEventListener("click", () => {dictaphone.startRecording()});
-    stop.addEventListener("click", () => {dictaphone.stopRecording()});
-    pp.addEventListener("click", () => {dictaphone.togglePlayback()});
-    rew.addEventListener("click", () => {dictaphone.rewind(0)});
-    ff.addEventListener("click", () => {dictaphone.rewindToEnd()});
   }
 
   componentWillMount() {
