@@ -17,7 +17,10 @@ class App extends Component {
       shouldPlay: false,
       shouldStop: false,
       shouldPause: false,
-      recordVideo: null
+      recordVideo: null,
+      recording: false,
+      playing: false,
+      saved: false
     };
   }
 
@@ -28,11 +31,17 @@ class App extends Component {
     console.log("Playing");
     let audio = document.getElementById('player');
     audio.play();
+    this.setState({
+      playing: true
+    })
   }
   onPlayerPause = () => {
     console.log("Paused");
     let audio = document.getElementById('player');
     audio.pause();
+    this.setState({
+      playing: false
+    })
   }
   onPlayerStop = () => {
     console.log("Stop");
@@ -46,6 +55,7 @@ class App extends Component {
     captureUserMedia((stream) => {
       this.setState({
         recordVideo: RecordRTC(stream, { type: 'audio' }),
+        recording: true
       })
       this.state.recordVideo.startRecording();
     });
@@ -61,6 +71,9 @@ class App extends Component {
        }
        this.state.recordVideo.id = Math.floor(Math.random()*90000) + 10000;
      });
+     this.setState({
+       recording: false
+     })
   }
 
   onRecordDelete() {
@@ -128,7 +141,8 @@ class App extends Component {
 
   updateAudioSrc = (src) => {
     this.setState({
-      src: src
+      src: src,
+      saved: true
     })
   }
 
@@ -142,11 +156,11 @@ class App extends Component {
     this.progressCounter();
   }
 
-  componentWillMount() {
-    this.setState({
-      src: baseURL + "asd.webm"
-    })
-  }
+  // componentWillMount() {
+  //   this.setState({
+  //     src: baseURL + "asd.webm"
+  //   })
+  // }
 
   render() {
     return (
@@ -160,6 +174,9 @@ class App extends Component {
           onDelete={this.onRecordDelete}
           onSave={this.onRecordSave}
           counter={this.state.counter}
+          recording={this.state.recording}
+          playing={this.state.playing}
+          saved={this.state.saved}
         />
         <Player
           source={this.state.src}

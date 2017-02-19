@@ -5,7 +5,7 @@ export default class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      source: this.props.source,
+    source: ""
     };
   }
 
