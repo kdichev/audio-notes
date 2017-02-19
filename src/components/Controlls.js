@@ -9,18 +9,13 @@ export default class Controlls extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState ({
-      progress: nextProps.counter
-    });
-  }
-
   render() {
     return (
       <div>
         <div>{this.state.progress}</div>
         <button onClick={() => {this.props.onPlay(); }}>Play</button>
         <button onClick={this.props.onPause}>Pause</button>
+        <button onClick={this.props.onStop}>Stop</button>
         <button onClick={this.props.onRecord}>Record</button>
         <button onClick={this.props.onDelete}>Delete</button>
         <button onClick={this.props.onSave}>Save</button>
