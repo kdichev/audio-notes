@@ -17,6 +17,7 @@ export default class Controlls extends Component {
         <button onClick={this.props.onPause}>Pause</button>
         <button onClick={this.props.onStop}>Stop</button>
         <button onClick={this.props.onRecord}>Record</button>
+        <button onClick={this.props.onRecordStop}>Stop Record</button>
         <button onClick={this.props.onDelete}>Delete</button>
         <button onClick={this.props.onSave}>Save</button>
       </div>

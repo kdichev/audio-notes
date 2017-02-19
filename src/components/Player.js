@@ -9,13 +9,22 @@ export default class Player extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log("hello", );
+    this.setState({
+      source: nextProps.source
+    })
+  }
+
   render() {
     return (
       <div>
-        <audio controls>
-          <source src={this.state.source} type="audio/ogg" />
-          Your browser does not support the audio tag.
-        </audio>
+        {this.props.source &&
+          <audio id="player">
+            <source id="audioSrc" src={this.state.source} type="audio/webm" />
+            Your browser does not support the audio tag.
+          </audio>
+        }
       </div>
     );
   }
